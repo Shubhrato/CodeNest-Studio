@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none" role="img" aria-label="CodeNest Studio — Web Development & Website Design">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B0D13"/>
+      <stop offset="1" stop-color="#0E1119"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="120" y1="250" x2="120" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2CD85"/>
+      <stop offset="1" stop-color="#E9B45A"/>
+    </linearGradient>
+    <radialGradient id="glowGold" cx="0" cy="0" r="1" gradientTransform="translate(980 140) rotate(90) scale(320)">
+      <stop stop-color="#E9B45A" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#E9B45A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowIris" cx="0" cy="0" r="1" gradientTransform="translate(180 560) rotate(-45) scale(340)">
+      <stop stop-color="#6E7BF2" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#6E7BF2" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glowGold)"/>
+  <rect width="1200" height="630" fill="url(#glowIris)"/>
+  <rect x="0.5" y="0.5" width="1199" height="629" rx="0" fill="none" stroke="#FFFFFF" stroke-opacity="0.06"/>
+
+  <!-- Nest mark -->
+  <g transform="translate(96 96)">
+    <rect x="0" y="0" width="88" height="88" rx="20" fill="#12151E" stroke="#E9B45A" stroke-opacity="0.28"/>
+    <g transform="translate(44 44)">
+      <path d="M-9 -21C-22 -15 -28 -5 -28 3s6 18 19 24" fill="none" stroke="#E9B45A" stroke-width="5.5" stroke-linecap="round"/>
+      <path d="M9 -21C22 -15 28 -5 28 3s-6 18-19 24" fill="none" stroke="#F2CD85" stroke-width="5.5" stroke-linecap="round" opacity="0.8"/>
+      <circle cx="0" cy="3" r="8" fill="#E9B45A"/>
+    </g>
+  </g>
+
+  <text x="208" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="600" fill="#ECEEF4">CodeNest <tspan fill="#E9B45A">Studio</tspan></text>
+
+  <!-- Headline -->
+  <text x="96" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="700" fill="#ECEEF4">Modern websites.</text>
+  <text x="96" y="422" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="700" fill="url(#gold)">Built for real business.</text>
+
+  <!-- Sub -->
+  <text x="98" y="492" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#A6ADBD">Web development &amp; website design — React, WordPress, PHP and more.</text>
+
+  <!-- Footer line -->
+  <text x="98" y="566" font-family="'Courier New', monospace" font-size="21" letter-spacing="2" fill="#6E7482">SHUBHRATO — GHAZIABAD, INDIA</text>
+  <text x="1104" y="566" text-anchor="end" font-family="'Courier New', monospace" font-size="21" letter-spacing="1" fill="#6E7482">codeneststudio.in</text>
+</svg>

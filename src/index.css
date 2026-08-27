@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CodeNest Studio — Design tokens
+   Deep blue-black ink · warm premium gold · a whisper of iris
+   ============================================================ */
+@theme {
+  /* Surfaces */
+  --color-ink: #0b0d13;
+  --color-ink-2: #0e111a;
+  --color-panel: #141824;
+  --color-panel-2: #1a1f2d;
+  --color-line: #262c3b;
+
+  /* Ink text */
+  --color-fg: #eceef4;
+  --color-muted: #9aa1b2;
+  --color-faint: #6b7080;
+
+  /* Signature accent — warm gold */
+  --color-gold: #e9b45a;
+  --color-gold-soft: #f2cd85;
+  --color-gold-deep: #c98f36;
+
+  /* Cool counter-accent — used only in ambient glows */
+  --color-iris: #6e7bf2;
+
+  /* Semantic */
+  --color-good: #5bd1a0;
+
+  /* Type */
+  --font-display: "Clash Display", "Satoshi", system-ui, sans-serif;
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* offset for sticky navbar when jumping to anchors */
+    scroll-padding-top: 88px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+
+  /* Accessible, on-brand focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-gold) 32%, transparent);
+    color: #fff;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: var(--color-ink); }
+  ::-webkit-scrollbar-thumb {
+    background: #2a3040;
+    border-radius: 999px;
+    border: 3px solid var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #39415a; }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+}
+
+/* ============================================================
+   Layout + signature utilities
+   ============================================================ */
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) { .shell { padding-inline: 1.75rem; } }
+  @media (min-width: 1024px) { .shell { padding-inline: 2.5rem; } }
+
+  .section {
+    position: relative;
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  /* Eyebrow label — mono, bracketed, gold */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+  .eyebrow::before {
+    content: "{";
+    color: color-mix(in oklab, var(--color-gold) 70%, transparent);
+    font-size: 1.05em;
+  }
+  .eyebrow::after {
+    content: "}";
+    color: color-mix(in oklab, var(--color-gold) 70%, transparent);
+    font-size: 1.05em;
+  }
+
+  /* Elevated panel / card */
+  .card {
+    position: relative;
+    background: linear-gradient(180deg, var(--color-panel) 0%, var(--color-ink-2) 100%);
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    transition: transform 0.4s var(--ease-out-soft), border-color 0.4s var(--ease-out-soft),
+      box-shadow 0.4s var(--ease-out-soft), background 0.4s var(--ease-out-soft);
+  }
+  .card-hover:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in oklab, var(--color-gold) 45%, var(--color-line));
+    box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.8),
+      0 0 0 1px color-mix(in oklab, var(--color-gold) 12%, transparent);
+  }
+
+  /* Glass panel */
+  .glass {
+    background: color-mix(in oklab, var(--color-panel) 62%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid color-mix(in oklab, #ffffff 9%, transparent);
+  }
+
+  /* Gold gradient text (the signature phrase treatment) */
+  .text-gold-grad {
+    background: linear-gradient(100deg, var(--color-gold-soft) 0%, var(--color-gold) 45%, var(--color-gold-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Fine engineering grid */
+  .grid-bg {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Hairline divider */
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-line) 22%, var(--color-line) 78%, transparent);
+    border: 0;
+  }
+
+  /* Chip / tag */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+    background: color-mix(in oklab, var(--color-panel-2) 70%, transparent);
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+    white-space: nowrap;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+@layer utilities {
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+    mask-image: linear-gradient(180deg, #000 55%, transparent);
+  }
+  .tabnum { font-variant-numeric: tabular-nums; }
+}
+
+/* ============================================================
+   Scroll-reveal (driven by IntersectionObserver hook)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s var(--ease-out-soft), transform 0.75s var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+.reveal.reveal--in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   Keyframes
+   ============================================================ */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes floaty-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(10px) translateX(-6px); }
+}
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(3%, 4%) scale(1.08); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-good) 55%, transparent); }
+  70% { box-shadow: 0 0 0 7px transparent; }
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+.modal-in { animation: modalIn 0.4s var(--ease-out-soft); }
+
+.animate-floaty { animation: floaty 6s ease-in-out infinite; }
+.animate-floaty-slow { animation: floaty-slow 9s ease-in-out infinite; }
+.animate-marquee { animation: marquee 38s linear infinite; }
+.animate-drift { animation: drift 22s ease-in-out infinite; }
+.blink { animation: blink 1.05s step-end infinite; }
+.pulse-dot { animation: pulse-dot 2.4s ease-out infinite; }
+
+/* ============================================================
+   Reduced motion — quiet everything
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .animate-floaty,
+  .animate-floaty-slow,
+  .animate-marquee,
+  .animate-drift,
+  .blink,
+  .pulse-dot,
+  .modal-in { animation: none !important; }
+  * { transition-duration: 0.01ms !important; }
+}
