@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import Logo from "./ui/Logo";
 import Button from "./ui/Button";
 import WhatsAppButton from "./ui/WhatsAppButton";
 import { nav } from "../data/site";
-import { useScrolled, useActiveSection } from "../hooks/useNav";
-
-const SECTION_IDS = nav.map((n) => n.href.replace("#", ""));
+import { useScrolled } from "../hooks/useNav";
 
 export default function Navbar() {
   const scrolled = useScrolled(24);
-  const active = useActiveSection(SECTION_IDS);
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const progressRef = useRef(null);
 
@@ -50,6 +49,11 @@ export default function Navbar() {
     };
   }, [open]);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
@@ -60,22 +64,21 @@ export default function Navbar() {
         }`}
       >
         <nav className="shell flex h-[68px] items-center justify-between" aria-label="Primary">
-          <a href="#home" className="shrink-0" aria-label="CodeNest Studio — home">
+          <Link to="/" className="shrink-0" aria-label="CodeNest Studio — home">
             <Logo />
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <ul className="hidden items-center gap-1 lg:flex">
             {nav.map((item) => {
-              const id = item.href.replace("#", "");
-              const isActive = active === id;
+              const isActive = location.pathname === item.href;
               return (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
-                    aria-current={isActive ? "true" : undefined}
+                  <Link
+                    to={item.href}
+                    aria-current={isActive ? "page" : undefined}
                     className={`relative rounded-full px-3.5 py-2 text-sm transition-colors duration-300 ${
-                      isActive ? "text-fg" : "text-muted hover:text-fg"
+                      isActive ? "text-fg font-medium" : "text-muted hover:text-fg"
                     }`}
                   >
                     {item.label}
@@ -84,14 +87,14 @@ export default function Navbar() {
                         isActive ? "scale-x-100" : "scale-x-0"
                       }`}
                     />
-                  </a>
+                  </Link>
                 </li>
               );
             })}
           </ul>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <Button href="#contact" size="sm" icon={ArrowUpRight} magnetic>
+            <Button href="/contact" size="sm" icon={ArrowUpRight} magnetic>
               Start a Project
             </Button>
           </div>
@@ -127,26 +130,25 @@ export default function Navbar() {
       >
         <div className="shell flex flex-col gap-1 py-5">
           {nav.map((item) => {
-            const id = item.href.replace("#", "");
-            const isActive = active === id;
+            const isActive = location.pathname === item.href;
             return (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 onClick={() => setOpen(false)}
                 className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[1.05rem] transition-colors ${
-                  isActive ? "bg-white/[0.04] text-gold" : "text-fg hover:bg-white/[0.03]"
+                  isActive ? "bg-white/[0.04] text-gold font-medium" : "text-fg hover:bg-white/[0.03]"
                 }`}
               >
                 {item.label}
                 <span className="font-mono text-xs text-faint">
                   0{nav.indexOf(item) + 1}
                 </span>
-              </a>
+              </Link>
             );
           })}
           <div className="mt-3 flex flex-col gap-3">
-            <Button href="#contact" size="md" full icon={ArrowUpRight} onClick={() => setOpen(false)}>
+            <Button href="/contact" size="md" full icon={ArrowUpRight} onClick={() => setOpen(false)}>
               Start a Project
             </Button>
             <WhatsAppButton full />

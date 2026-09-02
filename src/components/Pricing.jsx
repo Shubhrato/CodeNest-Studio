@@ -71,7 +71,7 @@ export default function Pricing() {
                 </ul>
 
                 <Button
-                  href="#contact"
+                  href="/contact"
                   variant={tier.popular ? "primary" : "outline"}
                   icon={ArrowRight}
                   full

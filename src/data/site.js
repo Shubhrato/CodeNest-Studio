@@ -19,13 +19,13 @@ export const site = {
 };
 
 export const nav = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Technologies", href: "#technologies" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Technologies", href: "/technologies" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const DEFAULT_WA_MESSAGE =

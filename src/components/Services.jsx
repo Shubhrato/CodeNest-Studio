@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import SectionHeader from "./ui/SectionHeader";
 import Reveal from "./ui/Reveal";
@@ -21,8 +22,8 @@ export default function Services() {
         <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s, i) => (
             <Reveal key={s.title} delay={(i % 4) * 70}>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="card card-hover group flex h-full flex-col gap-4 p-6"
                 aria-label={`${s.title} — start a project`}
               >
@@ -41,7 +42,7 @@ export default function Services() {
                   Enquire
                   <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </div>

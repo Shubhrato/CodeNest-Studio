@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 import Logo from "./ui/Logo";
 import { site, nav, mailtoLink } from "../data/site";
 import { services } from "../data/services";
 
 export default function Footer() {
-  const year = 2026; // Date APIs unavailable at build; update the site config yearly.
+  const year = 2026;
+
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer className="relative mt-24 border-t border-line/70 pt-16">
@@ -22,34 +28,34 @@ export default function Footer() {
           </div>
 
           {/* Explore */}
-          <nav aria-label="Footer">
+          <nav aria-label="Footer Navigation">
             <h2 className="font-mono text-xs uppercase tracking-widest text-faint">Explore</h2>
             <ul className="mt-4 space-y-2.5">
               {nav.map((item) => (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="text-sm text-muted transition-colors hover:text-gold"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
           {/* Services */}
-          <nav aria-label="Services">
+          <nav aria-label="Services Navigation">
             <h2 className="font-mono text-xs uppercase tracking-widest text-faint">Services</h2>
             <ul className="mt-4 space-y-2.5">
               {services.slice(0, 6).map((s) => (
                 <li key={s.title}>
-                  <a
-                    href="#services"
+                  <Link
+                    to="/services"
                     className="text-sm text-muted transition-colors hover:text-gold"
                   >
                     {s.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -111,13 +117,14 @@ export default function Footer() {
           <p className="text-xs text-faint">
             Built with care in {site.locationRegion}.
           </p>
-          <a
-            href="#home"
+          <button
+            type="button"
+            onClick={scrollToTop}
             className="group inline-flex items-center gap-1.5 text-xs text-muted transition-colors hover:text-gold"
           >
             Back to top
             <ArrowUp className="size-3.5 transition-transform group-hover:-translate-y-0.5" />
-          </a>
+          </button>
         </div>
       </div>
     </footer>

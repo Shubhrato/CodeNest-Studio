@@ -27,10 +27,10 @@ export default function FinalCTA() {
                 Let's build something fast, modern and designed around your goals.
               </p>
               <div className="mt-9 flex flex-wrap justify-center gap-3">
-                <Button href="#contact" size="lg" icon={ArrowRight} magnetic>
+                <Button href="/contact" size="lg" icon={ArrowRight} magnetic>
                   Start Your Project
                 </Button>
-                <WhatsAppButton />
+                <WhatsAppButton size="lg" />
               </div>
             </div>
           </div>

@@ -59,10 +59,10 @@ export default function Hero() {
           </p>
 
           <div {...item(250)} className="mt-8 flex flex-wrap items-center gap-3">
-            <Button href="#contact" size="lg" icon={ArrowRight} magnetic>
+            <Button href="/contact" size="lg" icon={ArrowRight} magnetic>
               Start Your Project
             </Button>
-            <Button href="#projects" size="lg" variant="outline" icon={ArrowUpRight}>
+            <Button href="/projects" size="lg" variant="outline" icon={ArrowUpRight}>
               Explore My Work
             </Button>
           </div>

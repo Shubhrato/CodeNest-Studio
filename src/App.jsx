@@ -1,45 +1,43 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BackgroundFX from "./components/ui/BackgroundFX";
+import ScrollToTop from "./components/ui/ScrollToTop";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import Technologies from "./components/Technologies";
-import Pricing from "./components/Pricing";
-import Projects from "./components/Projects";
-import Process from "./components/Process";
-import WhyUs from "./components/WhyUs";
-import About from "./components/About";
-import Capabilities from "./components/Capabilities";
-import FAQ from "./components/FAQ";
-import FinalCTA from "./components/FinalCTA";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+
+import HomePage from "./pages/HomePage";
+import ServicesPage from "./pages/ServicesPage";
+import TechnologiesPage from "./pages/TechnologiesPage";
+import PricingPage from "./pages/PricingPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
+      <ScrollToTop />
       <a
-        href="#home"
+        href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-gold focus:px-4 focus:py-2 focus:text-ink"
       >
         Skip to content
       </a>
       <BackgroundFX />
       <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <Technologies />
-        <Pricing />
-        <Projects />
-        <Process />
-        <WhyUs />
-        <About />
-        <Capabilities />
-        <FAQ />
-        <FinalCTA />
-        <Contact />
-      </main>
+      <div id="main-content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/technologies" element={<TechnologiesPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* Fallback to Home for unknown routes */}
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </div>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }

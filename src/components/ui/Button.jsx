@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useMagnetic } from "../../hooks/useMagnetic";
 
 const base =
@@ -31,8 +32,10 @@ export default function Button({
   ...rest
 }) {
   const magRef = useMagnetic(0.22);
-  const Comp = href ? "a" : as || "button";
-  const props = href ? { href } : { type: rest.type || "button" };
+
+  const isRouterLink = href && href.startsWith("/");
+  const Comp = isRouterLink ? Link : href ? "a" : as || "button";
+  const props = isRouterLink ? { to: href } : href ? { href } : { type: rest.type || "button" };
 
   return (
     <Comp

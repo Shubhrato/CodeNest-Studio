@@ -97,7 +97,7 @@ export default function About() {
 
           <Reveal delay={260}>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="#contact" icon={ArrowRight} magnetic>
+              <Button href="/contact" icon={ArrowRight} magnetic>
                 Let's Build Something
               </Button>
               <WhatsAppButton />
