@@ -3,6 +3,7 @@ import { Check, HelpCircle, Sparkles, ArrowRight, ShieldCheck } from "lucide-rea
 import PageHeader from "../components/ui/PageHeader";
 import Reveal from "../components/ui/Reveal";
 import Pricing from "../components/Pricing";
+import CostCalculator from "../components/CostCalculator";
 import FAQ from "../components/FAQ";
 import FinalCTA from "../components/FinalCTA";
 import Button from "../components/ui/Button";
@@ -31,6 +32,9 @@ export default function PricingPage() {
 
       {/* Pricing Cards Section */}
       <Pricing />
+
+      {/* Interactive Estimator Tool */}
+      <CostCalculator />
 
       {/* Custom Add-ons Section */}
       <section className="section py-16 bg-surface/30 border-y border-line/50">
